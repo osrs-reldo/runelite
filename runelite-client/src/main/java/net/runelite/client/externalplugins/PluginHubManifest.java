@@ -50,12 +50,20 @@ public class PluginHubManifest
 
 		File getJarFile()
 		{
+			if (internalName.equals("tasks-tracker"))
+			{
+				return new File(RuneLite.PLUGINS_DIR, "tasks-tracker-1.0-SNAPSHOT.jar");
+			}
 			return new File(RuneLite.PLUGINS_DIR, internalName + "_" + jarHash + ".jar");
 		}
 
 		boolean isValid()
 		{
 			File file = getJarFile();
+			if (internalName.equals("tasks-tracker"))
+			{
+				return true;
+			}
 
 			try
 			{
